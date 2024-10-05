@@ -3,8 +3,6 @@ package se.alex.lexicon.g51todoapi.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,7 +10,7 @@ import java.util.List;
 @ToString
 @EqualsAndHashCode
 @Entity
-public class Person {
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +18,4 @@ public class Person {
 
     @Column(nullable = false)
     private String name;
-
-    @OneToMany(mappedBy = "person")
-    private List<Task> tasks;
-
-    @OneToOne
-    private User user;
 }

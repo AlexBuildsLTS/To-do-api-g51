@@ -1,33 +1,18 @@
 package se.alex.lexicon.g51todoapi.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import se.alex.lexicon.g51todoapi.entity.User;
-import se.alex.lexicon.g51todoapi.repository.UserRepository;
+import se.alex.lexicon.g51todoapi.domain.dto.UserDTOForm;
+import se.alex.lexicon.g51todoapi.domain.dto.UserDTOView;
 
-import java.util.List;
-import java.util.Optional;
+public interface UserService {
+    // Registers a new user
+    UserDTOView register(UserDTOForm userDTOForm);
 
-@Service
-public class UserService {
+    // Retrieves a user by their email
+    UserDTOView getByEmail(String email);
 
-    private final UserRepository userRepository;
+    // Disables a user by their email
+    void disableByEmail(String email);
 
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public User createUser(String email, String password) {
-        User user = new User(email, password, false, null);
-        return userRepository.save(user);
-    }
-
-    public Optional<User> findByEmail(String email) {
-        return userRepository.findById(email);
-    }
-
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
+    // Enables a user by their email
+    void enableByEmail(String email);
 }

@@ -1,8 +1,8 @@
 package se.alex.lexicon.g51todoapi.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import se.alex.lexicon.g51todoapi.entity.Task;
 import se.alex.lexicon.g51todoapi.entity.Person;
+import se.alex.lexicon.g51todoapi.entity.Task;
 
 import java.util.List;
 

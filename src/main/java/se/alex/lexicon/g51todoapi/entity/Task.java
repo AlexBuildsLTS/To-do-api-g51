@@ -1,13 +1,16 @@
 package se.alex.lexicon.g51todoapi.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode
 @Entity
 public class Task {
 
@@ -22,22 +25,9 @@ public class Task {
     private String title;
 
     private LocalDate deadline;
-
     private boolean done;
 
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
-
-    // Removed static createTask method and replaced with a proper constructor
-    public Task(String title, String description, Person person) {
-        this.title = title;
-        this.description = description;
-        this.person = person;
-        this.done = false; // Default done status
-    }
-
-    public Task() {
-        // Default constructor
-    }
 }
